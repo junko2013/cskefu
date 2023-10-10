@@ -17,7 +17,7 @@ html
         meta(http-equiv='Cache-Control', content='no-siteapp')
         meta(name='viewport', content='width=device-width,maximum-scale=1,initial-scale=1,initial-scale=1,user-scalable=no')
         meta(name='apple-mobile-web-app-capable', content='yes')
-        title 在线咨询
+        title Online Consultation
         if systemConfig != null && systemConfig.favlogo != null
             link(rel='shortcut icon', type='image/x-icon', href='/res/image.html?id=' + systemConfig.favlogo)
         else
@@ -40,7 +40,7 @@ html
             newmessage['mp3'] = '/images/message.mp3';
             ring['mp3'] = '/images/ring.mp3';
             KindEditor.lang({
-                evaluation: '满意度评价'
+                evaluation: 'Satisfaction Rating'
             });
             KindEditor.ready(function (K) {
                 var items = ['emoticons', 'image', 'insertfile', 'evaluation'];
@@ -82,7 +82,7 @@ html
                             // 超过字数限制自动截取
                             strValue = strValue.substring(0, limitNum + imgnumber);
                             editor.html(strValue);
-                            document.getElementById('sent').innerHTML = "发送（" + limitNum + "/" + limitNum + "）"; //输入显示
+                            document.getElementById('sent').innerHTML = "Send（" + limitNum + "/" + limitNum + "）"; //输入显示
                         } else {
                             // 计算剩余字数
                             var result = limitNum - count;
@@ -91,7 +91,7 @@ html
                             } else {
                                 document.getElementById('sent').style.color = "#fff";
                             }
-                            document.getElementById('sent').innerHTML = "发送（" + count + "/" + limitNum + "）"; //输入显示
+                            document.getElementById('sent').innerHTML = "Send（" + count + "/" + limitNum + "）"; //输入显示
                         }
                         if (this.count("text") == 0) {
                             strValue = "";
@@ -306,12 +306,12 @@ html
                     document.getElementById("diaShade").style.display = "none";
                     document.getElementById("dialogWrap").style.display = "none";
                     if (isAgentEnds) {
-                        alert("服务评价已提交，请关闭浏览器！");
+                        alert("Service evaluation has been submitted, please close the browser！");
                         isAgentEnds = false;
 
                         service_end = true;
                     }
-                    alert("服务评价已提交");
+                    alert("Service evaluation has been submitted");
                 }, "id=" + form.id.value + "&satislevel=" + document.getElementById("satislevel_input").value + "&satiscomment=" + encodeURIComponent(satisComment));
                 return false;
             }
@@ -334,7 +334,7 @@ html
                         processData: false,
                         contentType: false
                     }).done(function (data) {
-                        console.log("发送数据");
+                        console.log("Send data");
                     });
                 }
                 , false)
@@ -360,12 +360,12 @@ html
                             if models.contains("chatbot") && inviteData.ai && aiid
                                 if exchange == "true"
                                     li
-                                        a(href="/im/index.html?appid=" + appid + (aiid ? "&aiid=" + aiid : "") + "&ai=true" + (client ? "&client=" + client : '') + (type ? "&type=text" : "") + (skill ? "&skill=" + skill : '') + (agent ? "&agent=" + agent : '') + (title ? "&title=" + title : '') + (url ? "&url=" + url : '') + (traceid ? "&traceid=" + traceid : '') + "&userid=" + userid + "&sessionid=" + sessionid + "&t=" + pugHelper.currentTimeMillis()) 智能客服
+                                        a(href="/im/index.html?appid=" + appid + (aiid ? "&aiid=" + aiid : "") + "&ai=true" + (client ? "&client=" + client : '') + (type ? "&type=text" : "") + (skill ? "&skill=" + skill : '') + (agent ? "&agent=" + agent : '') + (title ? "&title=" + title : '') + (url ? "&url=" + url : '') + (traceid ? "&traceid=" + traceid : '') + "&userid=" + userid + "&sessionid=" + sessionid + "&t=" + pugHelper.currentTimeMillis()) AI Customer Support
                                 li.cur
-                                    a(href="javascript:void(0)") 人工坐席
+                                    a(href="javascript:void(0)") Live Customer Support Agent
                             else
                                 li.cur
-                                    a(href="javascript:void(0)") 人工坐席
+                                    a(href="javascript:void(0)") Live Customer Support Agent
                 .content-left
                     .chat-above#above
                         if welcomeAd
@@ -379,7 +379,7 @@ html
                                             a#point_ad_text(href=welcomeAd.url, title=welcomeAd.tiptext, target="_blank")= welcomeAd.content
 
                         .clearfix.message.welcome
-                            span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : '欢迎您来咨询！欢迎使用 Chatopera 云服务！如需帮助请联系 info@chatopera.com'
+                            span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : 'Welcome to seek advice！'
 
                         if sessionConfig && sessionConfig.sessionmsg
                             div(style='text-align:center;')
@@ -405,7 +405,7 @@ html
                                             .chat-message
                                                 label.user
                                                     if chatMessage.chatype == 'aireply'
-                                                        | #{inviteData.ainame ? inviteData.ainame : '小松'}
+                                                        | #{inviteData.ainame ? inviteData.ainame : 'AI Bot'}
                                                     else
                                                         | #{chatMessage.username}
 
@@ -417,26 +417,26 @@ html
                     .chat-bottom#bottom
                         textarea#message(name='content', style='visibility:hidden;')
                         .btn-push.clearfix
-                            #surplus(style='float:left;height:34px;line-height:34px;margin: 10px 20px 10px 5px;'): a(style="color: #C7C6C6;text-decoration: none;cursor: pointer;", href="https://www.cskefu.com", target="_blank") 春松客服提供客服软件支持
-                            button.send-btn.active.clearfix#sent(class="theme" + inviteData.consult_dialog_color, type='button', onclick='sendMessage()') 发送
+                            #surplus(style='float:left;height:34px;line-height:34px;margin: 10px 20px 10px 5px;'): a(style="color: #C7C6C6;text-decoration: none;cursor: pointer;", href="#") AI Customer Service
+                            button.send-btn.active.clearfix#sent(class="theme" + inviteData.consult_dialog_color, type='button', onclick='sendMessage()') Send
 
                 .content-rig
                     .content-list(style='padding-top:50px;')
                         .content-head
-                            p 信息提示
+                            p Message Notification
                         ul
                             if inviteData.dialog_name != ""
                                 li
-                                    p= '名称：' + inviteData.dialog_name
+                                    p= 'Name：' + inviteData.dialog_name
                             if inviteData.dialog_address != ""
                                 li
-                                    p= '地址：' + inviteData.dialog_address
+                                    p= 'Address：' + inviteData.dialog_address
                             if inviteData.dialog_phone != ""
                                 li
-                                    p= '电话：' + inviteData.dialog_phone
+                                    p= 'Tel：' + inviteData.dialog_phone
                             if inviteData.dialog_mail != ""
                                 li
-                                    p= '邮件：' + inviteData.dialog_mail
+                                    p= 'Email：' + inviteData.dialog_mail
                             if inviteData.dialog_introduction != ""
                                 li
                                     p(style="text-indent:25px;line-height:25px;")= inviteData.dialog_introduction
@@ -471,9 +471,9 @@ html
                 form#commentContent(onsubmit='return submitForm(this)')
                     input#agentserviceid(type='hidden', name='id')
                     h2.diaHeader.clearfix
-                        span 评价
+                        span Rating
                         hr
-                    p.title 您是否对此次服务满意?
+                    p.title Are you satisfied with the service this time?
                     //- 评价
                     p(style='margin-top:20px; height: 20px')
                         span(style='float:left;') 评价：
@@ -488,7 +488,7 @@ html
 
                     //- 意见
                     p(style='margin-top:20px;')
-                        span(style='float:left;') 意见：
+                        span(style='float:left;') Opinion：
                         span(style='position: relative;top: 0px;left: 10px;')
                             input#comment_input(type='hidden', name='t')
                             div(style='width: 430px;height: auto;margin-left:55px;margin-bottom: 15px')
@@ -496,11 +496,11 @@ html
                                     div(style="margin-bottom:15px;width: 188px")
                                         input(type="radio", name="comment", id="item_" + item.id, value=item.id, contentname=item.name, onclick="selectOther(this.getAttribute('contentname'),this.value)")
                                         label.radio(for="item_" + item.id, style="margin-right: 0px")= item.name
-                            textarea#othertxt.layui-textarea(name='comment', placeholder='请输入意见(最大长度为200个字符)', style='resize:none;display: none;height: 56px; width:360px;margin-left: 55px;background: #f7f7f7;border-color: #ccc;font-size: 14px;outline: none;padding-left: 10px;border-radius: 2px;', maxlength='200')
+                            textarea#othertxt.layui-textarea(name='comment', placeholder='Please enter your feedback (maximum length is 200 characters)', style='resize:none;display: none;height: 56px; width:360px;margin-left: 55px;background: #f7f7f7;border-color: #ccc;font-size: 14px;outline: none;padding-left: 10px;border-radius: 2px;', maxlength='200')
                     p
                     //- 按钮
                     p.submitBtnWrap(style='margin-top: 0px')
-                        input.btn.submitBtn#submitBtn(type='submit', value='提 交')
+                        input.btn.submitBtn#submitBtn(type='submit', value='Submit')
 
     script.
         function chatScorllBottom(box) {
@@ -617,7 +617,7 @@ html
         });
 
         socket.on('disconnect', function () {
-            output('<span id="connect-message">连接坐席失败，在线咨询服务不可用</span>', 'message connect-message');
+            output('<span id="connect-message">Failed to connect to the agent, online consultation service is unavailable</span>', 'message connect-message');
             editor.readonly();
         });
 
@@ -648,7 +648,7 @@ html
                     });
                 }
             } else if (service_end == true) {
-                alert("坐席已断开和您的对话");
+                alert("The agent has disconnected from your conversation");
             }
             editor.html('');
         }

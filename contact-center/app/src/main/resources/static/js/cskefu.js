@@ -367,6 +367,11 @@ var Proxy = {
         }
     },
     newAgentUserMessage: function (data, type) {
+        if (data.message != "") {
+            console.log("new message:" + JSON.stringify(data))
+            var $li = $('#tip_message_' + data.userid).closest(".chat-list-item");
+            $li.prependTo($li.parent());
+        }
         if (data.usession == cursession) {
             if (data.type == 'writing' && $('#writing').length > 0) {
                 $('#writing').remove();

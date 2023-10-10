@@ -16,7 +16,7 @@ html
         meta(http-equiv='Cache-Control', content='no-siteapp')
         meta(name='viewport', content='width=device-width,maximum-scale=1,initial-scale=1,initial-scale=1,user-scalable=no')
         meta(name='apple-mobile-web-app-capable', content='yes')
-        title 智能客服
+        title AI Customer Support
         if systemConfig != null && systemConfig.favlogo != null
             link(rel='shortcut icon', type='image/x-icon', href='/res/image.html?id=' + systemConfig.favlogo)
         else
@@ -193,19 +193,19 @@ html
                 ul
                     if models.contains("chatbot") && inviteData.ai && inviteData.ai == true && aiid
                         li
-                            a(href="/im/index.html?appid=" + appid + (aiid ? '&aiid=' + aiid : '') + "&ai=true" + (client ? '&client=' + client : '') + (type ? '&type=' + type : '') + (skill ? '&skill=' + skill : '') + (agent ? '&agent=' + agent : '') + "&userid=" + userid + "&sessionid=" + sessionid + "&t=" + pugHelper.currentTimeMillis()) 智能客服
+                            a(href="/im/index.html?appid=" + appid + (aiid ? '&aiid=' + aiid : '') + "&ai=true" + (client ? '&client=' + client : '') + (type ? '&type=' + type : '') + (skill ? '&skill=' + skill : '') + (agent ? '&agent=' + agent : '') + "&userid=" + userid + "&sessionid=" + sessionid + "&t=" + pugHelper.currentTimeMillis()) AI Customer Support
                         li.cur
-                            a(href="javascript:void(0)") 人工坐席
+                            a(href="javascript:void(0)") Live Customer Support Agent
                     else
                         li.cur
-                            a(href="javascript:void(0)") 人工坐席
+                            a(href="javascript:void(0)") Live Customer Support Agent
         #cooperation.ukefu-cooperation(style='display:none;z-index: 100;background-color: #ffffff;position: fixed;left: 0px;width: 100%;top: 0px;top:0px;height: 100%;')
             .ukefu-image-canvas#ukefu-image-content(style='margin-top:2px;')
                 img#ukefu_img_ctx(style='max-width: 100%;max-height: 100%;')
             .drawBoard(style='position: absolute;left: 0;top: 0;margin-top:2px;z-index: 998;')
-                canvas#canvas-borad.brushBorad 你的浏览器不支持 canvas 绘图
+                canvas#canvas-borad.brushBorad Your browser does not support canvas drawing
             div(style='position: absolute;bottom: 10px;width: 100%;text-align: center;z-index:10000')
-                button#offcoop-btn(style='border-color:#009688 !important;color:#FFFFFF;display: inline-block;height: 38px;line-height: 38px;padding: 0 18px;background-color: #009688;color: #fff;white-space: nowrap;text-align: center;font-size: 14px;margin-right:10px;border: none;border-radius: 2px;cursor: pointer;opacity: .9;filter: alpha(opacity=90);background-color: #377FED !important;border:1px solid #FFFFFF;', onclick='offCoop();') 退出协作
+                button#offcoop-btn(style='border-color:#009688 !important;color:#FFFFFF;display: inline-block;height: 38px;line-height: 38px;padding: 0 18px;background-color: #009688;color: #fff;white-space: nowrap;text-align: center;font-size: 14px;margin-right:10px;border: none;border-radius: 2px;cursor: pointer;opacity: .9;filter: alpha(opacity=90);background-color: #377FED !important;border:1px solid #FFFFFF;', onclick='offCoop();') Exit Collaboration
         .chat-above#above
             if welcomeAd
                 .clearfix.message.welcome
@@ -218,7 +218,7 @@ html
                             div(style="padding:0px 5px 10px 5px;border-bottom:1px solid #dedede;")
                                 a#point_ad_text(href=welcomeAd.url, title=welcomeAd.tiptext, target="_blank")= welcomeAd.content
             .clearfix.message.welcome
-                span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : '欢迎您来咨询！欢迎使用 Chatopera 云服务！如需帮助请联系 info@chatopera.com'
+                span#welcome-message= inviteData.dialog_message ? inviteData.dialog_message : 'Welcome to seek advice！'
             for chatMessage in pugHelper.reverse(chatMessageList.content)
                 if chatMessage.userid && userid && chatMessage.calltype && chatMessage.calltype == "呼入"
                     .clearfix.chat-block
@@ -236,7 +236,7 @@ html
                         .chat-left
                             img.user-img(src=dialog_headimg, alt="")
                             .chat-message
-                                label.user= chatMessage.chatype && chatMessage.chatype == 'aireply' ? (inviteData.ainame ? inviteData.ainame : '小松') : chatMessage.username
+                                label.user= chatMessage.chatype && chatMessage.chatype == 'aireply' ? (inviteData.ainame ? inviteData.ainame : 'AI Bot') : chatMessage.username
                                 label.time= pugHelper.formatDate('yyyy-MM-dd HH:mm:ss', chatMessage.createtime)
                             .chatting-left
                                 i.arrow
@@ -272,12 +272,12 @@ html
                         input#agentserviceid(type='hidden', name='id')
                         div(style='width: 100%;height: 100%;overflow:auto;')
                             h2.diaHeader.clearfix(style='width: 90%;margin: 0 auto;')
-                                span 评价
+                                span Rating
                                 hr(style='width: 100%;')
-                            p.title(style='width: 90%;margin: 10px auto 0;') 您是否对此次服务满意?
+                            p.title(style='width: 90%;margin: 10px auto 0;') Are you satisfied with the service this time?
                             // 评价
                             div(style='width: 90%;margin: 20px auto')
-                                span(style='font-weight: 600;font-size: 16px;') 评价：
+                                span(style='font-weight: 600;font-size: 16px;') Rating：
                                 span(style='position: relative;top: 10px')
                                     div(style='width: 100%;height: auto;margin-bottom: 15px')
                                         - var defaultvalue = "";
@@ -289,7 +289,7 @@ html
                                         input#satislevel_input(type="hidden", name="t", value=defaultvalue)
 
                             div(style='width: 90%;margin: 20px auto')
-                                span(style='font-weight: 600;font-size: 16px;') 意见：
+                                span(style='font-weight: 600;font-size: 16px;') Opinion：
                                 input#comment_input(type='hidden', name='t')
                                 span(style='position: relative;top: 10px')
                                     div(style='width: 100%;height: auto;margin-bottom: 15px')
@@ -297,11 +297,11 @@ html
                                             div(style="margin-bottom:15px;width: 188px")
                                                 input(type="radio", name="comment", id="item_" + item.id, value=item.id, contentname=item.name, onclick="selectOther(this.getAttribute('contentname'),this.value)")
                                                 label.radio(for="item_" + item.id, style="margin-right: 0px")= item.name
-                                        textarea#othertxt.layui-textarea(name="comment", placeholder="请输入意见(最大长度为200个字符)", style="resize:none;display: none;height: 85px; width:100%;background: #f7f7f7;border-color: #ccc;font-size: 14px;outline: none;padding-left: 10px;border-radius: 2px;", maxlength="200")
+                                        textarea#othertxt.layui-textarea(name="comment", placeholder="Please enter your feedback (maximum length is 200 characters)", style="resize:none;display: none;height: 85px; width:100%;background: #f7f7f7;border-color: #ccc;font-size: 14px;outline: none;padding-left: 10px;border-radius: 2px;", maxlength="200")
                             div(style='width: 100%;height: 85px')
                             // 按钮
                             p.submitBtnWrap(style='background:#fff;position: fixed;bottom: 0px;left:0px;width: 100%;height:100px;padding-right: 0px;margin-bottom: 0px;z-index: 10')
-                                input.btn.submitBtn#submitBtn(type='submit', style='width: 85% !important;display: block;margin: 0 auto;', value='提 交')
+                                input.btn.submitBtn#submitBtn(type='submit', style='width: 85% !important;display: block;margin: 0 auto;', value='Submit')
         script.
             var service_end = false;
             // 调查问卷
@@ -457,7 +457,7 @@ html
                 }
                 R3Ajax.post("/im/satis.html", function () {
                     document.getElementById("dialogWrap").style.display = "none";
-                    alert("服务评价已提交");
+                    alert("Service evaluation has been submitted");
                 }, "id=" + form.id.value + "&satislevel=" + document.getElementById("satislevel_input").value + "&satiscomment=" + encodeURIComponent(satisComment));
                 return false;
             }
@@ -479,7 +479,7 @@ html
                     });
                 }
                 //service.sendRequestMessage();
-                //output('<span id="callOutConnect-message">'+ new Date().format("yyyy-MM-dd hh:mm:ss") + ' 开始沟通' +'</span>' , 'message callOutConnect-message');
+                //output('<span id="callOutConnect-message">'+ new Date().format("yyyy-MM-dd hh:mm:ss") + ' Start Communication' +'</span>' , 'message callOutConnect-message');
             })
             socket.on("agentstatus", function (data) {
                 document.getElementById('connect-message').innerHTML = data.message;
@@ -505,7 +505,7 @@ html
                 } else if (data.msgtype == "file") {
                     chat = "<div class='ukefu-message-file'><div class='ukefu-file-icon'><img src='/im/img/file.png'></div><div class='ukefu-file-desc'><a href='" + data.message + "' target='_blank'><div>" + data.filename + "</div><div>" + (data.filesize / 1024).toFixed(3) + "Kb</div></a></div></div>";
                 } else if (data.msgtype == "cooperation") {
-                    chat = "<a href='javascript:void(0)' onclick='acceptInvite(\"" + data.message + "\", \"" + data.attachmentid + "\")'>您收到一个协作邀请，点击进入协作</a>";
+                    chat = "<a href='javascript:void(0)' onclick='acceptInvite(\"" + data.message + "\", \"" + data.attachmentid + "\")'>You have received a collaboration invitation, click to enter the collaboration</a>";
                 } else if (data.msgtype == "action") {
                     //检查访客是否在协作页面上，如果在协作页面上，就开始执行重绘，否则不做处理
                     drawCanvasImage(data.attachmentid);
@@ -574,7 +574,7 @@ html
                     $("#message").val("");
                     wordinx = 0;
                 } else if (service_end == true) {
-                    alert("服务器已断开和您的对话");
+                    alert("The server has disconnected from your conversation");
                 }
                 closeFaceDialog(0);
             }
